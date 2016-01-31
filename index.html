@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pabloFdz - Portfolio</title>
+	<meta charset='UTF-8'>
+	<!-- Let's include some nice libraries -->
+	
+	<!-- ::JQuery:: -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+	<!-- ::Bootstrap:: -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<style type="text/css">
+	.channel {
+		border: 1px black solid;
+	}
+
+	.channel-enabled {
+		background: yellow;
+	}
+
+	.channel-disabled {
+		background: pink;
+	}
+
+	.pad {
+		border: 1px solid gray;
+		height: 50px;
+		width: 50px;
+
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+
+		background: white;
+	}
+
+	.pad-hover {
+		background: orange;	
+	}
+
+	.row {
+		margin-bottom: 1%;
+	}
+
+	.rec {
+	    border-radius: 50%;
+	    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+	    width: 40px;
+        height: 40px;
+        background: #ff0000;
+	}
+	.rec:hover {
+		background: #e60000;
+	}
+
+	.play {
+		width: 0; 
+		height: 0; 
+		border-top: 20px solid transparent;
+		border-bottom: 20px solid transparent;
+		
+		border-left: 40px solid #02d810;
+
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+	}
+	.play:hover {
+		border-left: 40px solid #01ac0c;
+	}
+
+	button:disabled {
+		background: magenta;
+	}
+	</style>
+</head>
+
+<body>
+	<!-- <div><button onclick="clearit()">clear</button></div> -->
+	
+	<div id="container">
+	
+		<div id="wrapper">
+
+			<div id="channel1" class="channel col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="rec"></div>
+					</div>
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="play"></div>
+					</div>
+					<div class="col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+						<button id="channel1" disabled>Switch channel</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="103" sound="kick1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="104" sound="kick2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="105" sound="kick3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="100" sound="hihat1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="101" sound="hihat2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="102" sound="hihat3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="97" sound="snare1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="98" sound="snare2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="99" sound="snare3"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="channel2" class="channel col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="rec"></div>
+					</div>
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="play"></div>
+					</div>
+					<div class="col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+						<button id="channel2">Switch channel</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="103" sound="kick1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="104" sound="kick2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="105" sound="kick3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="100" sound="hihat1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="101" sound="hihat2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="102" sound="hihat3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="97" sound="snare1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="98" sound="snare2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="99" sound="snare3"></div>
+					</div>
+				</div>
+			</div>
+
+			<div id="channel3" class="channel col-lg-4 col-md-4 col-sm-4 col-xs-4">
+				<div class="row">
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="rec"></div>
+					</div>
+					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+						<div class="play"></div>
+					</div>
+					<div class="col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
+						<button id="channel3">Switch channel</button>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="103" sound="kick1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="104" sound="kick2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="105" sound="kick3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="100" sound="hihat1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="101" sound="hihat2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="102" sound="hihat3"></div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="97" sound="snare1"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="98" sound="snare2"></div>
+					</div>
+					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+						<div class="pad" key="99" sound="snare3"></div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	
+	</div>
+
+</body>
+
+
+<script type="text/javascript">
+	var activeChannel = 'channel1';
+
+	$(document).ready(function() {
+		channelManager(activeChannel);
+	});
+
+	function channelManager(channelToActivate) {
+		$('.channel').each(function(index) {
+			if($(this).attr('id') == channelToActivate)
+				$(this).attr('status', 'true');
+			else
+				$(this).attr('status', 'false');
+		});
+
+		$('.channel').each(function(index) {
+			if($(this).attr('status') == 'true') {
+				$(this).addClass('channel-enabled');
+				$(this).removeClass('channel-disabled');
+			}
+			if($(this).attr('status') == 'false') {
+				$(this).addClass('channel-disabled');
+				$(this).removeClass('channel-enabled');
+			}
+			else{}
+		});
+	}
+
+	$('button').click(function() {
+		$('button').removeAttr("disabled");
+		$(this).prop('disabled', 'true');
+		activeChannel = $(this).attr('id');
+		channelManager(activeChannel);
+	});
+
+
+	$('.pad').click(function() {
+		padHandler($(this).addClass('pad-hover'));
+	});
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+	$(document).keydown(function(e) {
+		if(e.keyCode == '96')
+			console.log("TAB");
+		$('#' + activeChannel + ' .pad').each(function(index) {
+			if(e.keyCode == $(this).attr('key'))
+				padHandler($(this).addClass('pad-hover'));
+		});
+	});
+
+	function padHandler(pad) {
+		var audio = document.createElement('audio');
+		audio.src = 'sounds/' + $(pad).attr('sound') + '.mp3';
+		audio.play();
+
+		audio.addEventListener("ended", function() {
+			audio.currentTime = 0;
+			$(pad).removeClass('pad-hover');
+			audio = null;
+			pad = null;
+		});
+	}
+</script>
+</html>
