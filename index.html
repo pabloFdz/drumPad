@@ -6,132 +6,78 @@
 	<!-- Let's include some nice libraries -->
 	
 	<!-- ::JQuery:: -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
 	<!-- ::Bootstrap:: -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Optional -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-	<style type="text/css">
-	.channel {
-		border: 1px black solid;
-	}
-
-	.channel-enabled {
-		background: yellow;
-	}
-
-	.channel-disabled {
-		background: pink;
-	}
-
-	.pad {
-		border: 1px solid gray;
-		height: 50px;
-		width: 50px;
-
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
-
-		background: white;
-	}
-
-	.pad-hover {
-		background: orange;	
-	}
-
-	.row {
-		margin-bottom: 1%;
-	}
-
-	.rec {
-	    border-radius: 50%;
-	    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-	    width: 40px;
-        height: 40px;
-        background: #ff0000;
-	}
-	.rec:hover {
-		background: #e60000;
-	}
-
-	.play {
-		width: 0; 
-		height: 0; 
-		border-top: 20px solid transparent;
-		border-bottom: 20px solid transparent;
-		
-		border-left: 40px solid #02d810;
-
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
-	}
-	.play:hover {
-		border-left: 40px solid #01ac0c;
-	}
-
-	button:disabled {
-		background: magenta;
-	}
-	</style>
+	<link rel="stylesheet" href="main.css">
 </head>
 
 <body>
 	<!-- <div><button onclick="clearit()">clear</button></div> -->
-	
-	<div id="container">
+
+	<div id="container-fluid">
 	
 		<div id="wrapper">
 
 			<div id="channel1" class="channel col-lg-4 col-md-4 col-sm-4 col-xs-4">
 				<div class="row">
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-						<div class="rec"></div>
+						<div class="rec" onclick="stopMe();"></div>
 					</div>
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-						<div class="play"></div>
+						<div class="play" onclick="play('channel1');"></div>
 					</div>
 					<div class="col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
 						<button id="channel1" disabled>Switch channel</button>
 					</div>
 				</div>
-				
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="103" sound="kick1"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="104" sound="kick2"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="105" sound="kick3"></div>
-					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="100" sound="hihat1"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="101" sound="hihat2"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="102" sound="hihat3"></div>
-					</div>
-				</div>
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="row">
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="103" sound="kick1"><input type="text" onkeyup="checkInput(this)" style="visibility:hidden;"></input></div>
+								  <!-- <span>70</span> -->
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="104" sound="kick2"></div>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="105" sound="kick3"></div>
+							</div>
+						</div>
+					
+						<div class="row">
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="100" sound="hihat1"></div>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="101" sound="hihat2"></div>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="102" sound="hihat3"></div>
+							</div>
+						</div>
 
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="97" sound="snare1"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="98" sound="snare2"></div>
-					</div>
-					<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-						<div class="pad" key="99" sound="snare3"></div>
-					</div>
+						<div class="row">
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="97" sound="snare1"></div>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="98" sound="snare2"></div>
+							</div>
+							<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+								<div class="pad" key="99" sound="snare3"></div>
+							</div>
+						</div>
 				</div>
 			</div>
 
@@ -141,7 +87,7 @@
 						<div class="rec"></div>
 					</div>
 					<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
-						<div class="play"></div>
+						<div class="play" onclick="play('channel2');"></div>
 					</div>
 					<div class="col-lg-offset-8 col-md-1 col-sm-1 col-xs-1">
 						<button id="channel2">Switch channel</button>
@@ -235,15 +181,42 @@
 				</div>
 			</div>
 
-
 		</div>
-	
+
 	</div>
+
+
+<!-- <textarea id="chron"></textarea>
+<textarea id="seconds"></textarea> -->
 
 </body>
 
 
+
+
 <script type="text/javascript">
+	var recStatus = false;
+	var save;
+	var time = 0;
+
+	function record() {
+		var sec = 0;
+		setInterval(function() {
+			time += 0.01;
+			
+			$('#chron').text(time.toFixed(2));
+			
+		}, 10);
+
+
+		//used in the second textbox to check the seconds work properly
+		setInterval(function() {
+			sec++;
+			$('#seconds').text(sec);
+		}, 1000);
+	}
+
+
 	var activeChannel = 'channel1';
 
 	$(document).ready(function() {
@@ -285,15 +258,63 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	var times = [];
 
 	$(document).keydown(function(e) {
 		if(e.keyCode == '96')
-			console.log("TAB");
-		$('#' + activeChannel + ' .pad').each(function(index) {
-			if(e.keyCode == $(this).attr('key'))
-				padHandler($(this).addClass('pad-hover'));
-		});
+			record();
+
+		if(recStatus == false) {
+			recStatus = true;
+		}
+
+		else {
+			$('#' + activeChannel + ' .pad').each(function() {
+				if(e.keyCode == $(this).attr('key')) {
+					padHandler($(this).addClass('pad-hover'));
+					times.push([(time.toFixed(2)), e.keyCode]);
+					console.log(times[2][1]);
+
+				}
+			});
+		}
 	});
+	
+
+	/*
+		Called when the "Play" button of each channel is pressed.
+		Receives the name of the channel to play.
+		
+	*/
+	function play(channel) {
+		var x = 0;
+		var timeArray = [ ["0.0", "105"], ["0.7", "100"], ["1.2", "105"], ["1.5", "105"], ["1.7", "105"], ["2", "100"] ];
+		var currentTime = 0;
+		var sec = 0;
+
+		var playInterval = setInterval(function() {
+			
+			if(currentTime >= timeArray[x][0]) {
+				$('#' + channel + ' .pad').each(function() {
+					if(timeArray[x][1] == $(this).attr('key'))
+						padHandler($(this).addClass('pad-hover'));
+				});
+				x++;
+
+				if(x == timeArray.length) {
+					clearInterval(playInterval);
+					setTimeout(function() {
+						play(channel);
+					}, 700);
+					
+				}
+			}
+
+			currentTime += 0.01;
+		}, 10);
+	}
 
 	function padHandler(pad) {
 		var audio = document.createElement('audio');
@@ -306,6 +327,61 @@
 			audio = null;
 			pad = null;
 		});
+	}
+
+
+
+
+function checkInput(ob) {
+  var invalidChars = /[^0-9]/gi
+  if(invalidChars.test(ob.value)) {
+            ob.value = ob.value.replace(invalidChars,"");
+      }
+}
+
+
+
+
+
+//VOLUME
+// $(function() {
+//     // setup graphic EQ
+//     $( "span" ).each(function() {
+//       // read initial values from markup and remove that
+//       var value = parseInt( $( this ).text(), 10 );
+//       $( this ).empty().slider({
+//         value: value,
+//         range: "min",
+//         animate: true,
+//         orientation: "vertical"
+//       });
+//     });
+//   });
+
+
+	// $(document).on("keypress", function (e) {
+	//     $('.pad').each(function(index) {
+	//     	if(e.keyCode == $(this).attr('key')) {
+	//     		$(this).toggleClass('pad-hover');
+	//     		var audio = document.createElement('audio');
+	//     		audio.src = 'sounds/' + $(this).attr('sound') + '.mp3';
+	//     		audio.play();
+	//     		audio = null;
+	//     	}
+	//     });
+	// });
+
+	// Change favicon
+	(function() {
+	    var link = document.createElement('link');
+	    link.type = 'image/x-icon';
+	    link.rel = 'shortcut icon';
+	    link.href = 'http://www.stackoverflow.com/favicon.ico';
+	    document.getElementsByTagName('head')[0].appendChild(link);
+	}());
+
+	function clearit() {
+		console.clear();
 	}
 </script>
 </html>
